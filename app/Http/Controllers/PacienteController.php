@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+=======
+
+
 class PacienteController extends Controller
 {
     /**
@@ -26,6 +31,9 @@ class PacienteController extends Controller
     public function create()
     {
         //
+
+        return view('pacientes.create');
+
     }
 
     /**
@@ -37,6 +45,27 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         //
+
+        try {
+            DB::beginTransaction();
+            $paciente  = new Paciente();
+            $paciente ->nombre = $request->nombre;
+            $paciente ->apellido = $request->apellido;
+            $paciente ->DNI = $request->DNI;
+            $paciente ->telefono = $request->telefono;
+            $paciente ->direccion = $request->direccion;
+            $paciente ->edad = $request->edad;
+            $paciente ->genero = $request->genero;
+            $paciente->save();
+        DB::commit();
+        } catch (\Throwable $th) {
+          DB::rollBack();
+          return Redirect::route('pacientes.create')
+          ->with('error', 'no se pudo guardar');
+        }
+        return Redirect::route('pacientes.index')
+        ->with('info', 'se guardo correctamente');
+
     }
 
     /**
@@ -59,6 +88,10 @@ class PacienteController extends Controller
     public function edit($id)
     {
         //
+
+        $paciente = Paciente::findOrfail($id);
+        return view('pacientes.create', compact('paciente'));
+
     }
 
     /**
@@ -71,7 +104,32 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        try {
+            DB::beginTransaction();
+        
+            $paciente = new Paciente();
+            $paciente->nombre = $request->nombre;
+            $paciente->apellido = $request->apellido;
+            $paciente->dni = $request->dni;
+            $paciente->telefono = $request->telefono;
+            $paciente->direccion = $request->direccion;
+            $paciente->edad = $request->edad;
+            $paciente->genero = $request->genero;
+        
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('pacientes.index')->with('error', 'No se pudo guardar.');
+        }
+        return redirect()->route('pacientes.index')->with('info', 'Se guardó correctamente.');
+        
     }
+
+
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
