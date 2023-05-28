@@ -16,6 +16,9 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>DNI</th>
+    <th>Telefono</th>
+    <th>Dirección</th>
+    <th>Edad</th>
     <th>genero</th>
     <th>Examenes</th>
    </tr>
@@ -23,7 +26,14 @@
   <tbody>
    @foreach ($pacientes as $paciente)
     <tr>
-     
+     <td>{{$paciente->nombre}}</td>
+     <td>{{$paciente->apellido}}</td>
+     <td>{{$paciente->dni}}</td>
+     <td>{{$paciente->telefono}}</td>
+     <td>{{$paciente->direccion}}</td>
+     <td>{{$paciente->edad}}</td>
+     <td>{{$paciente->genero}}</td>
+     <td>{{$paciente->examene}}</td>
     </tr>
    @endforeach
   </tbody>
