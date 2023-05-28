@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+=======
+
 
 class PacienteController extends Controller
 {
@@ -28,7 +31,9 @@ class PacienteController extends Controller
     public function create()
     {
         //
+
         return view('pacientes.create');
+
     }
 
     /**
@@ -40,6 +45,7 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         //
+
         try {
             DB::beginTransaction();
             $paciente  = new Paciente();
@@ -59,6 +65,7 @@ class PacienteController extends Controller
         }
         return Redirect::route('pacientes.index')
         ->with('info', 'se guardo correctamente');
+
     }
 
     /**
@@ -81,8 +88,10 @@ class PacienteController extends Controller
     public function edit($id)
     {
         //
+
         $paciente = Paciente::findOrfail($id);
         return view('pacientes.create', compact('paciente'));
+
     }
 
     /**
@@ -95,6 +104,7 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         //
+
         try {
             DB::beginTransaction();
         
@@ -114,6 +124,10 @@ class PacienteController extends Controller
         }
         return redirect()->route('pacientes.index')->with('info', 'Se guardó correctamente.');
         
+    }
+
+
+
     }
 
 
