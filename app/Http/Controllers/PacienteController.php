@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-=======
+
 
 
 class PacienteController extends Controller
@@ -20,7 +20,7 @@ class PacienteController extends Controller
     public function index(){
         //
         $pacientes = Paciente::all();
-        return view('pacientes.index', compact('pacientes'));
+        return view('laboratorio.pacientes.index', compact('pacientes'));
     }
 
     /**
@@ -32,7 +32,7 @@ class PacienteController extends Controller
     {
         //
 
-        return view('pacientes.create');
+        return view('laboratorio.pacientes.create');
 
     }
 
@@ -60,10 +60,10 @@ class PacienteController extends Controller
         DB::commit();
         } catch (\Throwable $th) {
           DB::rollBack();
-          return Redirect::route('pacientes.create')
+          return Redirect::route('laboratorio.pacientes.create')
           ->with('error', 'no se pudo guardar');
         }
-        return Redirect::route('pacientes.index')
+        return Redirect::route('laboratorio.pacientes.index')
         ->with('info', 'se guardo correctamente');
 
     }
@@ -90,7 +90,7 @@ class PacienteController extends Controller
         //
 
         $paciente = Paciente::findOrfail($id);
-        return view('pacientes.create', compact('paciente'));
+        return view('laboratorio.pacientes.create', compact('paciente'));
 
     }
 
@@ -120,14 +120,10 @@ class PacienteController extends Controller
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            return redirect()->route('pacientes.index')->with('error', 'No se pudo guardar.');
+            return redirect()->route('laboratorio.pacientes.index')->with('error', 'No se pudo guardar.');
         }
-        return redirect()->route('pacientes.index')->with('info', 'Se guardó correctamente.');
+        return redirect()->route('laboratorio.pacientes.index')->with('info', 'Se guardó correctamente.');
         
-    }
-
-
-
     }
 
 

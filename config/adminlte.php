@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Laboratorio',
+    'title' => 'AdminLTE 3',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'LabBuenaMuerte',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -303,21 +303,41 @@ return [
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text'=> 'Administrador',
+            'icon' => 'fas fa-user-shield',
+            'submenu' => [
+                [
+                    'text' => 'Trabajadores',
+                    'icon' => 'fas fa-people-group',
+                    'url' => 'administrador.user.index',
+                ]
+            ]
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Administrador',
-            'icon'        => 'far fa-fw fa-file',
-        ],
-        [
-            'text'        => 'Pacientes',
-            'route'       => 'pacientes.index'
+            'text'=> 'Laboratorio',
+            'icon' => 'fas fa-vial',
+            'submenu' => [
+                [
+                    'text' => 'Analisis',
+                    'icon' => 'fas fa-print',
+                    'url' => 'laboratorio.analisis.index',
+                ],
+                [
+                    'text' => 'Examenes',
+                    'icon' => 'fas fa-scroll',
+                    'url' => 'laboratorio.examenes.index',
+                ],
+                [
+                    'text' => 'Pacientes',
+                    'icon' => 'fas fa-users',
+                    'url' => 'laboratorio.pacientes.index',
+                ],
+                [
+                    'text' => 'Solicitudes',
+                    'icon' => 'fas fa-paperclip',
+                    'url' => 'laboratorio.solicitudes.index',
+                ],
+            ]
         ]
     ],
 

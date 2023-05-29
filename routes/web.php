@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\AnalisiController;
 use App\Http\Controllers\ExameneController;
@@ -22,9 +23,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pacientes', PacienteController::class);
-Route::resource('analisis', AnalisiController::class);
-Route::resource('examenes', ExameneController::class);
-Route::resource('solicitudes', SolicitudeController::class);
+Route::resource('admnistrador/users/', UserController::class)
+->names('administrador.user');
+
+Route::resource('laboratorio/pacientes/', PacienteController::class)
+->names('laboratorio.pacientes');
+Route::resource('laboratorio/analisis/', AnalisiController::class)
+->names('laboratorio.analisis');
+Route::resource('laboratorio/examenes/', ExameneController::class)
+->names('laboratorio.examenes');
+Route::resource('laboratorio/solicitudes/', SolicitudeController::class)
+->names('laboratorio.solicitudes');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
