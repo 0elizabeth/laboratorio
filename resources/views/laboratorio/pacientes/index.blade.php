@@ -2,11 +2,11 @@
 @section('title', 'Pacientes')
 @section('content_header')
  <h1>Todos los pacientes registrados</h1>
- <a href="{{route('pacientes.create')}}">
+ <!-- <a href="{{route('pacientes.create')}}"> -->
   <button class="btn btn-primary">
    Nuevo paciente
   </button>
- </a>
+ <!-- </a> -->
 @stop
 @section('content')
  <p>Lista de pacientes dentro del sistema</p>
