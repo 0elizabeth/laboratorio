@@ -23,16 +23,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admnistrador/users/', UserController::class)
-->names('administrador.user');
+Route::resource('administrador/users', UserController::class)
+->names('administrador.users');
 
-Route::resource('laboratorio/pacientes/', PacienteController::class)
+Route::resource('laboratorio/pacientes', PacienteController::class)
 ->names('laboratorio.pacientes');
-Route::resource('laboratorio/analisis/', AnalisiController::class)
+Route::resource('laboratorio/analisis', AnalisiController::class)
 ->names('laboratorio.analisis');
-Route::resource('laboratorio/examenes/', ExameneController::class)
+Route::resource('laboratorio/examenes', ExameneController::class)
 ->names('laboratorio.examenes');
-Route::resource('laboratorio/solicitudes/', SolicitudeController::class)
+Route::resource('laboratorio/solicitudes', SolicitudeController::class)
 ->names('laboratorio.solicitudes');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

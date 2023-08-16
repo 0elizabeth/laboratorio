@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index(){
         //
-
+        $users = User::all();
+        return view('administrador.user.index', compact('users'));
     }
 
     /**
@@ -24,8 +27,7 @@ class UserController extends Controller
     public function create()
     {
         //
-
-
+        return view('adminstrador.user.create');
     }
 
     /**
@@ -37,7 +39,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->direccion = $request->direccion;
+        $user->telefono = $request->telefono;
+        $user->cargo = $request->cargo;
+        $user->save();
+        return Redirect::route('administrador.users.index');
     }
 
     /**
@@ -49,6 +59,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -60,7 +71,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-
+        $user = User::findOrFail($id);
+        return view('administrador.user.edit', compact('user'));
     }
 
     /**
@@ -73,7 +85,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->direccion = $request->direccion;
+        $user->telefono = $request->telefono;
+        $user->cargo = $request->cargo;
+        $user->update();
+        return Redirect::route('administrador.users.index');
     }
 
 
@@ -86,5 +106,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrfail($id);
+        $user->delete();
+        return Redirect::route('administrador.users.index');
     }
 }
