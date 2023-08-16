@@ -309,7 +309,7 @@ return [
                 [
                     'text' => 'Trabajadores',
                     'icon' => 'fas fa-people-group',
-                    'url' => 'administrador.user.index',
+                    'url' => 'administrador/users',
                 ]
             ]
         ],
@@ -320,22 +320,22 @@ return [
                 [
                     'text' => 'Analisis',
                     'icon' => 'fas fa-print',
-                    'url' => 'laboratorio.analisis.index',
+                    'url' => 'laboratorio/analisis',
                 ],
                 [
                     'text' => 'Examenes',
                     'icon' => 'fas fa-scroll',
-                    'url' => 'laboratorio.examenes.index',
+                    'url' => 'laboratorio/examenes',
                 ],
                 [
                     'text' => 'Pacientes',
                     'icon' => 'fas fa-users',
-                    'url' => 'laboratorio.pacientes.index',
+                    'url' => 'laboratorio/pacientes',
                 ],
                 [
                     'text' => 'Solicitudes',
                     'icon' => 'fas fa-paperclip',
-                    'url' => 'laboratorio.solicitudes.index',
+                    'url' => 'laboratorio/solicitudes',
                 ],
             ]
         ]
